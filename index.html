@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complexo Escolar Privado Fulama</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+<div class="cursor" ></div>
+
+
+<header class="menu">
+<div class="logo">Fulama</div>
+
+<nav class="nav-links" id="navLinks">
+<a href="#inicio">Início</a>
+<a href="#sobre">Sobre</a>
+<a href="#cursos">Cursos</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<div class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span
+</div>
+</header>
+
+<!-- HERO -->
+<section class="section" id="inicio">
+<div class="split">
+<div class="content reveal reveal-left">
+<h2>Formando <span class="gradient">Líderes do Futuro</span></h2>
+<p>Educação moderna com disciplina e excelência.</p>
+<a href="#sobre" class="btn">Descobrir Mais</a>
+</div>
+<div class="image_area reveal reveal-right">
+<img src="/iimg/file_00000000aca8722f9219a09af9387072.png">
+</div>
+</div>
+</section>
+
+<!-- SOBRE -->
+<section class="section dark" id="sobre">
+<div class="split">
+<div class="image_area reveal reveal-left">
+<img src="/iimg/at/pro.png">
+</div>
+<div class="content reveal reveal-right">
+<h2><span class="gradient">Excelência Académica</span></h2>
+<p>Professores qualificados, infraestrutura moderna e metodologia focada em resultados.</p>
+<a href="#cursos" class="btn">Ver Cursos</a>
+</div>
+</div>
+</section>
+
+<!-- CURSOS -->
+<section class="section" id="cursos">
+<div class="split">
+<div class="content reveal reveal-left">
+<h2>Nossos <span class="gradient">Programas Educativos</span></h2>
+<p>Ensino estruturado desde a base até a preparação universitária.</p>
+<a href="#contacto" class="btn">Solicitar Informações</a>
+</div>
+<div class="image_area reveal reveal-right">
+<img src="/iimg/at/file_000000007d0471f5bfd62046a2f29f52.png">
+</div>
+</div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section" id="contacto">
+<div class="split">
+<div class="image_area reveal reveal-left">
+<img src="/iimg/at/image_1_1772192088817.jpg">
+</div>
+<div class="content reveal reveal-right">
+<h2><span class="gradient">Garanta a Vaga</span></h2>
+<p>Entre em contacto e faça parte de uma instituição que transforma potencial em sucesso.</p>
+<a href="#" class="btn">Falar Connosco</a>
+</div>
+</div>
+</section>
+
+<footer class="direitos_cepf" >
+    @Complexo Escolar Privado Fulama.
+    <p>Todos os Direitos Reservados.</p>
+</footer>
+
+
+<script src="main.js" >
+</script>
+<script>
+// MENU RESPONSIVO
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+// abrir/fechar menu
+menuToggle.onclick = () => {
+    navLinks.classList.toggle("nav-active");
+};
+
+// fechar menu ao clicar em link (mobile)
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("nav-active");
+    });
+});
+
+// SCROLL REVEAL REATIVÁVEL
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("active");
+}else{
+entry.target.classList.remove("active");
+}
+});
+},{ threshold:0.3 });
+
+reveals.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
