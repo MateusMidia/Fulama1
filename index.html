@@ -30,13 +30,7 @@ html,body{
     margin:0;
     padding:0;
     background:var(--light);
-    overflow-x:hidden; /* evita movimento lateral */
-}
-
-img{
-    border:3px solid #42445A;
-    max-width:100%; /* impede ultrapassar a tela */
-    height:auto;
+    overflow-x:hidden;
 }
 
 /* MENU */
@@ -204,6 +198,12 @@ img{
     object-fit:cover;
 }
 
+/* LAZY LOADING OPTIMIZADO */
+img{
+    max-width:100%;
+    height:auto;
+}
+
 /* DARK */
 .dark{
     background:var(--primary);
@@ -264,7 +264,7 @@ img{
         <a href="#sobre" class="btn">Descobrir Mais</a>
     </div>
     <div class="image_area reveal reveal-right">
-        <img src="SENA.png" alt="Imagem">
+        <img src="SENA.png" loading="lazy" alt="Imagem">
     </div>
 </div>
 </section>
@@ -273,7 +273,7 @@ img{
 <section class="section dark" id="sobre">
 <div class="split">
     <div class="image_area reveal reveal-left">
-        <img src="pro.png" alt="Imagem">
+        <img src="pro.png" loading="lazy" alt="Imagem">
     </div>
     <div class="content reveal reveal-right">
         <h2><span class="gradient">Excelência Académica</span></h2>
@@ -292,7 +292,7 @@ img{
         <a href="#contacto" class="btn">Solicitar Informações</a>
     </div>
     <div class="image_area reveal reveal-right">
-        <img src="file_000000007d0471f5bfd62046a2f29f52.png" alt="Imagem">
+        <img src="file_000000007d0471f5bfd62046a2f29f52.png" loading="lazy" alt="Imagem">
     </div>
 </div>
 </section>
@@ -301,7 +301,7 @@ img{
 <section class="section" id="contacto">
 <div class="split">
     <div class="image_area reveal reveal-left">
-        <img src="image_1_1772192088817.jpg" alt="Imagem">
+        <img src="image_1_1772192088817.jpg" loading="lazy" alt="Imagem">
     </div>
     <div class="content reveal reveal-right">
         <h2><span class="gradient">Garanta a Vaga</span></h2>
