@@ -5,99 +5,322 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Complexo Escolar Privado Fulama</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+:root{
+    --primary:#0b1f3a;
+    --secondary:#142f57;
+    --gold:#c6a84b;
+    --light:#f4f6f9;
+    --white:#ffffff;
+}
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Times New Roman';
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    background:var(--light);
+    overflow-x:hidden; /* evita movimento lateral */
+}
+
+img{
+    border:3px solid #42445A;
+    max-width:100%; /* impede ultrapassar a tela */
+    height:auto;
+}
+
+/* MENU */
+.menu{
+    position:fixed;
+    width:100%;
+    top:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:rgba(11,31,58,0.95);
+    backdrop-filter:blur(8px);
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-weight:bold;
+    font-size:1.2rem;
+}
+
+.nav-links{
+    display:flex;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:30px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    height:3px;
+    width:25px;
+    background:white;
+    margin:4px 0;
+}
+
+/* MOBILE MENU */
+@media(max-width:900px){
+    .nav-links{
+        position:fixed;
+        right:-100%;
+        top:0;
+        height:100vh;
+        width:250px;
+        background:var(--primary);
+        flex-direction:column;
+        padding-top:100px;
+        transition:0.4s;
+    }
+
+    .nav-links a{
+        margin:20px 30px;
+        font-size:1.1rem;
+    }
+
+    .nav-active{
+        right:0;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+}
+
+/* SECTIONS */
+.section{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:120px 8% 80px 8%;
+}
+
+.split{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+    width:100%;
+}
+
+.content,
+.image_area{
+    flex:1;
+    max-width:100%;
+}
+
+/* ANIMAÇÃO */
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+}
+
+.reveal-left{
+    transform:translateX(-80px);
+}
+
+.reveal-right{
+    transform:translateX(80px);
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateX(0) translateY(0);
+}
+
+/* TEXTO */
+.content h2{
+    font-size:2.7rem;
+    margin-bottom:20px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,var(--gold),#f0d98a);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.content p{
+    line-height:1.8;
+    margin-bottom:30px;
+    font-size:1.1rem;
+}
+
+.btn{
+    padding:14px 40px;
+    background:var(--gold);
+    color:var(--primary);
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.07);
+}
+
+/* IMAGEM */
+.image_area{
+    height:450px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+
+.image_area img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* DARK */
+.dark{
+    background:var(--primary);
+    color:white;
+}
+
+.dark .btn{
+    background:white;
+    color:var(--primary);
+}
+
+@media(max-width:900px){
+    .split{
+        flex-direction:column;
+    }
+
+    .image_area{
+        height:300px;
+    }
+}
+
+/* DIREITOS */
+.direitos_cepf{
+    text-align:center;
+    background:black;
+    color:#42445A;
+    font-size:19px;
+    padding:15px;
+}
+</style>
 </head>
 
 <body>
-    
-<div class="cursor" ></div>
-
 
 <header class="menu">
-<div class="logo">Fulama</div>
+    <div class="logo">Fulama</div>
 
-<nav class="nav-links" id="navLinks">
-<a href="#inicio">Início</a>
-<a href="#sobre">Sobre</a>
-<a href="#cursos">Cursos</a>
-<a href="#contacto">Contacto</a>
-</nav>
+    <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
 
-<div class="menu-toggle" id="menuToggle">
-<span></span><span></span><span></span
-</div>
+    <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </header>
 
 <!-- HERO -->
 <section class="section" id="inicio">
 <div class="split">
-<div class="content reveal reveal-left">
-<h2>Formando <span class="gradient">Líderes do Futuro</span></h2>
-<p>Educação moderna com disciplina e excelência.</p>
-<a href="#sobre" class="btn">Descobrir Mais</a>
-</div>
-<div class="image_area reveal reveal-right">
-<img src="SENA.png">
-</div>
+    <div class="content reveal reveal-left">
+        <h2>Formando <span class="gradient">Líderes do Futuro</span></h2>
+        <p>Educação moderna com disciplina e excelência.</p>
+        <a href="#sobre" class="btn">Descobrir Mais</a>
+    </div>
+    <div class="image_area reveal reveal-right">
+        <img src="SENA.png" alt="Imagem">
+    </div>
 </div>
 </section>
 
 <!-- SOBRE -->
 <section class="section dark" id="sobre">
 <div class="split">
-<div class="image_area reveal reveal-left">
-<img src="pro.png">
-</div>
-<div class="content reveal reveal-right">
-<h2><span class="gradient">Excelência Académica</span></h2>
-<p>Professores qualificados, infraestrutura moderna e metodologia focada em resultados.</p>
-<a href="#cursos" class="btn">Ver Cursos</a>
-</div>
+    <div class="image_area reveal reveal-left">
+        <img src="pro.png" alt="Imagem">
+    </div>
+    <div class="content reveal reveal-right">
+        <h2><span class="gradient">Excelência Académica</span></h2>
+        <p>Professores qualificados, infraestrutura moderna e metodologia focada em resultados.</p>
+        <a href="#cursos" class="btn">Ver Cursos</a>
+    </div>
 </div>
 </section>
 
 <!-- CURSOS -->
 <section class="section" id="cursos">
 <div class="split">
-<div class="content reveal reveal-left">
-<h2>Nossos <span class="gradient">Programas Educativos</span></h2>
-<p>Ensino estruturado desde a base até a preparação universitária.</p>
-<a href="#contacto" class="btn">Solicitar Informações</a>
-</div>
-<div class="image_area reveal reveal-right">
-<img src="file_000000007d0471f5bfd62046a2f29f52.png">
-</div>
+    <div class="content reveal reveal-left">
+        <h2>Nossos <span class="gradient">Programas Educativos</span></h2>
+        <p>Ensino estruturado desde a base até a preparação universitária.</p>
+        <a href="#contacto" class="btn">Solicitar Informações</a>
+    </div>
+    <div class="image_area reveal reveal-right">
+        <img src="file_000000007d0471f5bfd62046a2f29f52.png" alt="Imagem">
+    </div>
 </div>
 </section>
 
 <!-- CONTACTO -->
 <section class="section" id="contacto">
 <div class="split">
-<div class="image_area reveal reveal-left">
-<img src="image_1_1772192088817.jpg">
-</div>
-<div class="content reveal reveal-right">
-<h2><span class="gradient">Garanta a Vaga</span></h2>
-<p>Entre em contacto e faça parte de uma instituição que transforma potencial em sucesso.</p>
-<a href="#" class="btn">Falar Connosco</a>
-</div>
+    <div class="image_area reveal reveal-left">
+        <img src="image_1_1772192088817.jpg" alt="Imagem">
+    </div>
+    <div class="content reveal reveal-right">
+        <h2><span class="gradient">Garanta a Vaga</span></h2>
+        <p>Entre em contacto e faça parte de uma instituição que transforma potencial em sucesso.</p>
+        <a href="#" class="btn">Falar Connosco</a>
+    </div>
 </div>
 </section>
 
-<footer class="direitos_cepf" >
+<footer class="direitos_cepf">
     @Complexo Escolar Privado Fulama.
     <p>Todos os Direitos Reservados.</p>
 </footer>
 
-
-<script src="main.js" >
-</script>
 <script>
 // MENU RESPONSIVO
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-// abrir/fechar menu
 menuToggle.onclick = () => {
     navLinks.classList.toggle("nav-active");
 };
@@ -109,17 +332,17 @@ document.querySelectorAll(".nav-links a").forEach(link => {
     });
 });
 
-// SCROLL REVEAL REATIVÁVEL
+// SCROLL REVEAL
 const reveals = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver((entries)=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("active");
-}else{
-entry.target.classList.remove("active");
-}
-});
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("active");
+        }else{
+            entry.target.classList.remove("active");
+        }
+    });
 },{ threshold:0.3 });
 
 reveals.forEach(el=>observer.observe(el));
@@ -127,3 +350,5 @@ reveals.forEach(el=>observer.observe(el));
 
 </body>
 </html>
+
+
